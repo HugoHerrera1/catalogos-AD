@@ -1,109 +1,102 @@
 package com.mx.imss.model;
 
-import java.sql.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
-@Table(name = "adts_turnos")
+@Table(name = "adtsc_turnos")
 public class Turno {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "cve_turno")
-	private Long cve_turno;
+    @Id
+    @Column(name = "ID_TURNO", nullable = false)
+    private Integer id;
 
-	@Column(name = "des_turno", length = 45, nullable = false)
-	private String des_turno;
+    @Column(name = "DES_TURNO", nullable = false, length = 50)
+    private String desTurno;
 
+    @Column(name = "CVE_TURNO", length = 45)
+    private String cveTurno;
 
-		
-	@Column(name = "fec_baja")
-	private Date fec_baja;
-	
-	
-	@Column(name = "fec_alta")
-	private Date fec_alta;
-	
-	@Column(name = "fec_actualizacion")
-	private Date fec_actualizacion;
-	
-	@Column(name = "ind_activo")
-	private Long ind_activo;
-	public Turno() {
+    @Column(name = "FEC_EXPIRA")
+    private LocalDate fecExpira;
 
-	}
-	
-	public Turno(Long cve_turno, String des_turno,Date fec_baja,Date fec_alta,Date fec_actualizacion,Long ind_activo ) {
-		super();
-		this.cve_turno = cve_turno;
-		this.des_turno = des_turno;
-		this.fec_baja = fec_baja;
-		this.fec_alta = fec_alta;
-		this.fec_actualizacion = fec_actualizacion;
-		this.ind_activo=ind_activo;
-	}
+    @Column(name = "FEC_ALTA")
+    private Date fecAlta;
 
-	
-	public Long getCve_turno() {
-		return cve_turno;
-	}
+    @Column(name = "FEC_ACTUALIZACION")
+    private Date fecActualizacion;
 
-	public void setCve_turno(Long cve_turno) {
-		this.cve_turno = cve_turno;
-	}
+    @Column(name = "FEC_BAJA")
+    private Date fecBaja;
 
-	public String getDes_turno() {
-		return des_turno;
-	}
+    @Column(name = "IND_ACTIVO")
+    private Boolean indActivo;
 
-	public void setDes_turno(String des_turno) {
-		this.des_turno = des_turno;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public Long getInd_activo() {
-		return ind_activo;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setInd_activo(Long ind_activo) {
-		this.ind_activo = ind_activo;
-	}
+    public String getDesTurno() {
+        return desTurno;
+    }
 
-	public Date getFec_baja() {
-		return fec_baja;
-	}
+    public void setDesTurno(String desTurno) {
+        this.desTurno = desTurno;
+    }
 
-	public void setFec_baja(Date fec_baja) {
-		this.fec_baja = fec_baja;
-	}
+    public String getCveTurno() {
+        return cveTurno;
+    }
 
-	public Date getFec_alta() {
-		return fec_alta;
-	}
+    public void setCveTurno(String cveTurno) {
+        this.cveTurno = cveTurno;
+    }
 
-	public void setFec_alta(Date fec_alta) {
-		this.fec_alta = fec_alta;
-	}
+    public LocalDate getFecExpira() {
+        return fecExpira;
+    }
 
-	public Date getFec_actualizacion() {
-		return fec_actualizacion;
-	}
+    public void setFecExpira(LocalDate fecExpira) {
+        this.fecExpira = fecExpira;
+    }
 
-	public void setFec_actualizacion(Date fec_actualizacion) {
-		this.fec_actualizacion = fec_actualizacion;
-	}
+    public Date getFecAlta() {
+        return fecAlta;
+    }
 
+    public void setFecAlta(Date fecAlta) {
+        this.fecAlta = fecAlta;
+    }
 
-	
+    public Date getFecActualizacion() {
+        return fecActualizacion;
+    }
 
+    public void setFecActualizacion(Date fecActualizacion) {
+        this.fecActualizacion = fecActualizacion;
+    }
+
+    public Date getFecBaja() {
+        return fecBaja;
+    }
+
+    public void setFecBaja(Date fecBaja) {
+        this.fecBaja = fecBaja;
+    }
+
+    public Boolean getIndActivo() {
+        return indActivo;
+    }
+
+    public void setIndActivo(Boolean indActivo) {
+        this.indActivo = indActivo;
+    }
 
 }
-
-
-

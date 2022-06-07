@@ -1,196 +1,200 @@
 package com.mx.imss.model;
 
-import java.sql.Date;
-import java.sql.Time;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-
+import javax.persistence.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.Date;
 
 @Entity
-@Table(name = "adts_calendario_anual")
+@Table(name = "adtsc_calendario_anual")
 public class CalendarioAnual {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "cve_calendario_anual")
-	private Long cve_calendario_anual;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID_CALENDARIO_ANUAL", nullable = false)
+    private Integer id;
 
-	
-	@Column(name = "fec_inicio")
-	private Date fec_inicio;
-	
-	@Column(name = "tim_hora_inicio")
-	private Time tim_hora_inicio;
-	
-	@Column(name = "num_duracion")
-	private Long num_duracion;
-	
-	@Column(name = "fec_fin")
-	private Date fec_fin;
-	
-	@Column(name = "tim_hora_fin")
-	private Time tim_hora_fin;
-	
-	@Column(name = "maximo_partcipantes")
-	private Long maximo_partcipantes;
-	
-	@Column(name = "fec_baja")
-	private Date fec_baja;
-	
-	@Column(name = "fec_alta")
-	private Date fec_alta;
-	
-	@Column(name = "fec_actualizacion")
-	private Date fec_actualizacion;
-	
-	@Column(name = "ind_activo")
-	private Long ind_activo;
-	
-	@Column(name = "cve_ubicacion")
-	private String cve_ubicacion;
-	
-	@Column(name = "cve_especialidad")
-	private String cve_especialidad;
-	
+    @Column(name = "ID_UBICACION", nullable = false)
+    private Integer idUbicacion;
 
-	public CalendarioAnual() {
+    @Column(name = "ID_GRUPO_PROGRAMA", nullable = false)
+    private Integer idGrupoPrograma;
 
-	}
-	
-	public CalendarioAnual(Long cve_calendario_anual,Date fec_inicio,Time tim_hora_inicio, Long num_duracion,Date fec_fin,
-			Time tim_hora_fin,Long maximo_partcipantes,Date fec_baja,Date fec_alta,Date fec_actualizacion,
-			Long ind_activo,String cve_ubicacion,String cve_especialidad) {
-		super();
-		this.cve_calendario_anual = cve_calendario_anual;
-		this.fec_inicio = fec_inicio;
-		this.tim_hora_inicio = tim_hora_inicio;
-		this.fec_baja = fec_baja;
-		this.fec_alta = fec_alta;
-		this.num_duracion = num_duracion;
-		this.ind_activo=ind_activo;
-		this.cve_especialidad=cve_especialidad;
-		this.fec_fin=fec_fin;		
-		this.tim_hora_fin=tim_hora_fin;
-		this.maximo_partcipantes=maximo_partcipantes;
-		this.cve_ubicacion=cve_ubicacion;
-		this.fec_actualizacion=fec_actualizacion;
-		
-	}
+    @Column(name = "ID_ESTATUS", nullable = false)
+    private Integer idEstatus;
 
-	public Long getCve_calendario_anual() {
-		return cve_calendario_anual;
-	}
+    @Column(name = "ID_TURNO")
+    private Integer idTurno;
 
-	public void setCve_calendario_anual(Long cve_calendario_anual) {
-		this.cve_calendario_anual = cve_calendario_anual;
-	}
+    @Column(name = "FEC_INICIO", nullable = false)
+    private LocalDate fecInicio;
 
-	public Date getFec_inicio() {
-		return fec_inicio;
-	}
+    @Column(name = "TIM_HORA_INICIO", nullable = false)
+    private LocalTime timHoraInicio;
 
-	public void setFec_inicio(Date fec_inicio) {
-		this.fec_inicio = fec_inicio;
-	}
+    @Column(name = "NUM_DURACION", nullable = false)
+    private Integer numDuracion;
 
-	public Time getTim_hora_inicio() {
-		return tim_hora_inicio;
-	}
+    @Column(name = "FEC_FIN", nullable = false)
+    private Date fecFin;
 
-	public void setTim_hora_inicio(Time tim_hora_inicio) {
-		this.tim_hora_inicio = tim_hora_inicio;
-	}
+    @Column(name = "TIM_HORA_FIN", nullable = false)
+    private LocalTime timHoraFin;
 
-	public Long getNum_duracion() {
-		return num_duracion;
-	}
+    @Column(name = "NUM_MAXIMO_PARTCIPANTES", nullable = false)
+    private Integer numMaximoPartcipantes;
 
-	public void setNum_duracion(Long num_duracion) {
-		this.num_duracion = num_duracion;
-	}
+    @Column(name = "DES_TRABAJADOR_SOCIAL", length = 100)
+    private String desTrabajadorSocial;
 
-	public Date getFec_fin() {
-		return fec_fin;
-	}
+    @Column(name = "FEC_EXPIRA")
+    private LocalDate fecExpira;
 
-	public void setFec_fin(Date fec_fin) {
-		this.fec_fin = fec_fin;
-	}
+    @Column(name = "FEC_ALTA")
+    private Date fecAlta;
 
-	public Time getTim_hora_fin() {
-		return tim_hora_fin;
-	}
+    @Column(name = "FEC_ACTUALIZACION")
+    private Date fecActualizacion;
 
-	public void setTim_hora_fin(Time tim_hora_fin) {
-		this.tim_hora_fin = tim_hora_fin;
-	}
+    @Column(name = "FEC_BAJA")
+    private Date fecBaja;
 
-	public Long getMaximo_partcipantes() {
-		return maximo_partcipantes;
-	}
+    @Column(name = "IND_ACTIVO")
+    private Boolean indActivo;
 
-	public void setMaximo_partcipantes(Long maximo_partcipantes) {
-		this.maximo_partcipantes = maximo_partcipantes;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public Date getFec_baja() {
-		return fec_baja;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setFec_baja(Date fec_baja) {
-		this.fec_baja = fec_baja;
-	}
+    public Integer getIdUbicacion() {
+        return idUbicacion;
+    }
 
-	public Date getFec_alta() {
-		return fec_alta;
-	}
+    public void setIdUbicacion(Integer idUbicacion) {
+        this.idUbicacion = idUbicacion;
+    }
 
-	public void setFec_alta(Date fec_alta) {
-		this.fec_alta = fec_alta;
-	}
+    public Integer getIdGrupoPrograma() {
+        return idGrupoPrograma;
+    }
 
-	public Date getFec_actualizacion() {
-		return fec_actualizacion;
-	}
+    public void setIdGrupoPrograma(Integer idGrupoPrograma) {
+        this.idGrupoPrograma = idGrupoPrograma;
+    }
 
-	public void setFec_actualizacion(Date fec_actualizacion) {
-		this.fec_actualizacion = fec_actualizacion;
-	}
+    public Integer getIdEstatus() {
+        return idEstatus;
+    }
 
-	public Long getInd_activo() {
-		return ind_activo;
-	}
+    public void setIdEstatus(Integer idEstatus) {
+        this.idEstatus = idEstatus;
+    }
 
-	public void setInd_activo(Long ind_activo) {
-		this.ind_activo = ind_activo;
-	}
+    public Integer getIdTurno() {
+        return idTurno;
+    }
 
-	public String getCve_ubicacion() {
-		return cve_ubicacion;
-	}
+    public void setIdTurno(Integer idTurno) {
+        this.idTurno = idTurno;
+    }
 
-	public void setCve_ubicacion(String cve_ubicacion) {
-		this.cve_ubicacion = cve_ubicacion;
-	}
+    public LocalDate getFecInicio() {
+        return fecInicio;
+    }
 
-	public String getCve_especialidad() {
-		return cve_especialidad;
-	}
+    public void setFecInicio(LocalDate fecInicio) {
+        this.fecInicio = fecInicio;
+    }
 
-	public void setCve_especialidad(String cve_especialidad) {
-		this.cve_especialidad = cve_especialidad;
-	}
+    public LocalTime getTimHoraInicio() {
+        return timHoraInicio;
+    }
 
-	
-	
+    public void setTimHoraInicio(LocalTime timHoraInicio) {
+        this.timHoraInicio = timHoraInicio;
+    }
 
+    public Integer getNumDuracion() {
+        return numDuracion;
+    }
+
+    public void setNumDuracion(Integer numDuracion) {
+        this.numDuracion = numDuracion;
+    }
+
+    public Date getFecFin() {
+        return fecFin;
+    }
+
+    public void setFecFin(Date fecFin) {
+        this.fecFin = fecFin;
+    }
+
+    public LocalTime getTimHoraFin() {
+        return timHoraFin;
+    }
+
+    public void setTimHoraFin(LocalTime timHoraFin) {
+        this.timHoraFin = timHoraFin;
+    }
+
+    public Integer getNumMaximoPartcipantes() {
+        return numMaximoPartcipantes;
+    }
+
+    public void setNumMaximoPartcipantes(Integer numMaximoPartcipantes) {
+        this.numMaximoPartcipantes = numMaximoPartcipantes;
+    }
+
+    public String getDesTrabajadorSocial() {
+        return desTrabajadorSocial;
+    }
+
+    public void setDesTrabajadorSocial(String desTrabajadorSocial) {
+        this.desTrabajadorSocial = desTrabajadorSocial;
+    }
+
+    public LocalDate getFecExpira() {
+        return fecExpira;
+    }
+
+    public void setFecExpira(LocalDate fecExpira) {
+        this.fecExpira = fecExpira;
+    }
+
+    public Date getFecAlta() {
+        return fecAlta;
+    }
+
+    public void setFecAlta(Date fecAlta) {
+        this.fecAlta = fecAlta;
+    }
+
+    public Date getFecActualizacion() {
+        return fecActualizacion;
+    }
+
+    public void setFecActualizacion(Date fecActualizacion) {
+        this.fecActualizacion = fecActualizacion;
+    }
+
+    public Date getFecBaja() {
+        return fecBaja;
+    }
+
+    public void setFecBaja(Date fecBaja) {
+        this.fecBaja = fecBaja;
+    }
+
+    public Boolean getIndActivo() {
+        return indActivo;
+    }
+
+    public void setIndActivo(Boolean indActivo) {
+        this.indActivo = indActivo;
+    }
 
 }
-
-
-

@@ -1,145 +1,122 @@
 package com.mx.imss.model;
 
-import java.sql.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
-@Table(name = "adts_grupos_programas")
+@Table(name = "adtsc_grupos_programas")
 public class Programa {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "cve_grupo_programa")
-	private Long cve_grupo_programa;
-	
-	@Column(name = "des_grupo_programa")
-	private String des_grupo_programa;
-	
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "ID_GRUPO_PROGRAMA", nullable = false)
+    private Integer id;
 
-	@Column(name = "des_actividad", length = 15, nullable = false)
-	private String des_actividad;
-	
-	@Column(name = "des_codigo", length = 15, nullable = false)
-	private String des_codigo;
+    @Column(name = "CVE_ESPECIALIDAD", nullable = false)
+    private String cveEspecialidad;
 
-	
-	
-	@Column(name = "fec_baja")
-	private Date fec_baja;
-	
-	
-	@Column(name = "fec_alta")
-	private Date fec_alta;
-	
-	@Column(name = "fec_modificacion")
-	private Date fec_modificacion;
-	
-	@Column(name = "ind_activo")
-	private Long ind_activo;
-	
-	@Column(name = "cve_especialidad")
-	private String cve_especialidad;
-	
-	
+    @Column(name = "NOM_GRUPO_PROGRAMA", nullable = false, length = 100)
+    private String nomGrupoPrograma;
 
-	public Programa() {
+    @Column(name = "CVE_CODIGO", length = 10)
+    private String cveCodigo;
 
-	}
-	
-	public Programa(Long cve_grupo_programa, String des_grupo_programa,String des_codigo,
-			Date fec_baja,Date fec_alta,Date fec_modificacion,Long ind_activo,String cve_especialidad ) {
-		super();
-		this.cve_grupo_programa = cve_grupo_programa;
-		this.des_grupo_programa = des_grupo_programa;
-		this.des_codigo = des_codigo;
-		this.fec_baja = fec_baja;
-		this.fec_alta = fec_alta;
-		this.fec_modificacion = fec_modificacion;
-		this.ind_activo=ind_activo;
-		this.cve_especialidad=cve_especialidad;
-	}
+    @Column(name = "DES_ACTIVIDAD", length = 200)
+    private String desActividad;
 
-	public Long getCve_grupo_programa() {
-		return cve_grupo_programa;
-	}
+    @Column(name = "FEC_EXPIRA")
+    private LocalDate fecExpira;
 
-	public void setCve_grupo_programa(Long cve_grupo_programa) {
-		this.cve_grupo_programa = cve_grupo_programa;
-	}
+    @Column(name = "FEC_ALTA")
+    private Date fecAlta;
 
-	public String getDes_grupo_programa() {
-		return des_grupo_programa;
-	}
+    @Column(name = "FEC_ACTUALIZACION")
+    private Date fecActualizacion;
 
-	public void setDes_grupo_programa(String des_grupo_programa) {
-		this.des_grupo_programa = des_grupo_programa;
-	}
+    @Column(name = "FEC_BAJA")
+    private Date fecBaja;
 
-	public String getDes_actividad() {
-		return des_actividad;
-	}
+    @Column(name = "IND_ACTIVO")
+    private Boolean indActivo;
 
-	public void setDes_actividad(String des_actividad) {
-		this.des_actividad = des_actividad;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public String getDes_codigo() {
-		return des_codigo;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setDes_codigo(String des_codigo) {
-		this.des_codigo = des_codigo;
-	}
+    public String getCveEspecialidad() {
+        return cveEspecialidad;
+    }
 
-	public Date getFec_baja() {
-		return fec_baja;
-	}
+    public void setCveEspecialidad(String cveEspecialidad) {
+        this.cveEspecialidad = cveEspecialidad;
+    }
 
-	public void setFec_baja(Date fec_baja) {
-		this.fec_baja = fec_baja;
-	}
+    public String getNomGrupoPrograma() {
+        return nomGrupoPrograma;
+    }
 
-	public Date getFec_alta() {
-		return fec_alta;
-	}
+    public void setNomGrupoPrograma(String nomGrupoPrograma) {
+        this.nomGrupoPrograma = nomGrupoPrograma;
+    }
 
-	public void setFec_alta(Date fec_alta) {
-		this.fec_alta = fec_alta;
-	}
+    public String getCveCodigo() {
+        return cveCodigo;
+    }
 
-	public Date getFec_modificacion() {
-		return fec_modificacion;
-	}
+    public void setCveCodigo(String cveCodigo) {
+        this.cveCodigo = cveCodigo;
+    }
 
-	public void setFec_modificacion(Date fec_modificacion) {
-		this.fec_modificacion = fec_modificacion;
-	}
+    public String getDesActividad() {
+        return desActividad;
+    }
 
-	public Long getInd_activo() {
-		return ind_activo;
-	}
+    public void setDesActividad(String desActividad) {
+        this.desActividad = desActividad;
+    }
 
-	public void setInd_activo(Long ind_activo) {
-		this.ind_activo = ind_activo;
-	}
+    public LocalDate getFecExpira() {
+        return fecExpira;
+    }
 
-	public String getCve_especialidad() {
-		return cve_especialidad;
-	}
+    public void setFecExpira(LocalDate fecExpira) {
+        this.fecExpira = fecExpira;
+    }
 
-	public void setCve_especialidad(String cve_especialidad) {
-		this.cve_especialidad = cve_especialidad;
-	}
+    public Date getFecAlta() {
+        return fecAlta;
+    }
 
-	
+    public void setFecAlta(Date fecAlta) {
+        this.fecAlta = fecAlta;
+    }
 
+    public Date getFecActualizacion() {
+        return fecActualizacion;
+    }
+
+    public void setFecActualizacion(Date fecActualizacion) {
+        this.fecActualizacion = fecActualizacion;
+    }
+
+    public Date getFecBaja() {
+        return fecBaja;
+    }
+
+    public void setFecBaja(Date fecBaja) {
+        this.fecBaja = fecBaja;
+    }
+
+    public Boolean getIndActivo() {
+        return indActivo;
+    }
+
+    public void setIndActivo(Boolean indActivo) {
+        this.indActivo = indActivo;
+    }
 
 }
-
-
-

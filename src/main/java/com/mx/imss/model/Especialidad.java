@@ -1,201 +1,179 @@
 package com.mx.imss.model;
 
-import java.sql.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
-@Table(name = "adts_especialidades")
+@Table(name = "adtst_especialidades")
 public class Especialidad {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "cve_especialidad")
-	private String cve_especialidad;
-	
-	@Column(name = "des_clave_especialidad", length = 255, nullable = false)
-	private String des_clave_especialidad;
-	
+    @Id
+    @Column(name = "CVE_ESPECIALIDAD", nullable = false, length = 45)
+    private String id;
 
-	@Column(name = "des_especialidad", length = 70, nullable = false)
-	private String des_especialidad;
+    @Column(name = "DES_CLAVE_ESPECIALIDAD", nullable = false)
+    private String desClaveEspecialidad;
 
-	@Column(name = "ind_ce")
-	private Long ind_ce;
-	
-	@Column(name = "ind_iq")
-	private Long ind_iq;
-	
-	@Column(name = "ind_hospital")
-	private Long ind_hospital;
-	
-	@Column(name = "ind_nivel1")
-	private Long ind_nivel1;
-	
-	@Column(name = "ind_nivel2")
-	private Long ind_nivel2;
-	
-	@Column(name = "ind_nivel3")
-	private Long ind_nivel3;
-	
-	@Column(name = "ind_css")
-	private Long ind_css;
-	
-	@Column(name = "fec_baja")
-	private Date fec_baja;
-	
-	
-	@Column(name = "fec_alta")
-	private Date fec_alta;
-	
-	@Column(name = "fec_actualizacion")
-	private Date fec_actualizacion;
-	
-	@Column(name = "ind_activo")
-	private Long ind_activo;
-	
-	
-	
+    @Column(name = "NOM_ESPECIALIDAD", nullable = false, length = 70)
+    private String nomEspecialidad;
 
-	public Especialidad() {
+    @Column(name = "IND_CE", nullable = false)
+    private Boolean indCe = false;
 
-	}
-	
-	public Especialidad(String cve_especialidad, String des_especialidad,Long ind_ce,Long ind_hospital,Long ind_iq,
-			Long ind_nivel1,Long ind_nivel2, Long ind_nivel3, Long ind_css,Date fec_baja,Date fec_alta,Date fec_actualizacion,Long ind_activo,String des_clave_especialidad ) {
-		super();
-		this.cve_especialidad = cve_especialidad;
-		this.des_especialidad = des_especialidad;
-		this.ind_ce = ind_ce;
-		this.ind_hospital = ind_hospital;
-		this.ind_iq = ind_iq;
-		this.ind_nivel1 = ind_nivel1;
-		this.ind_nivel2 = ind_nivel2;
-		this.ind_nivel3 = ind_nivel3;
-		this.ind_css = ind_css;
-		this.fec_baja = fec_baja;
-		this.fec_alta = fec_alta;
-		this.fec_actualizacion = fec_actualizacion;
-		this.ind_activo=ind_activo;
-	}
+    @Column(name = "IND_HOSPITAL", nullable = false)
+    private Boolean indHospital = false;
 
+    @Column(name = "IND_IQ", nullable = false)
+    private Boolean indIq = false;
 
+    @Column(name = "IND_NIVEL1", nullable = false)
+    private Boolean indNivel1 = false;
 
-	public Long getInd_activo() {
-		return ind_activo;
-	}
+    @Column(name = "IND_NIVEL2", nullable = false)
+    private Boolean indNivel2 = false;
 
-	public void setInd_activo(Long ind_activo) {
-		this.ind_activo = ind_activo;
-	}
+    @Column(name = "IND_NIVEL3", nullable = false)
+    private Boolean indNivel3 = false;
 
-	public String getCve_especialidad() {
-		return cve_especialidad;
-	}
+    @Column(name = "IND_CSS", nullable = false)
+    private Boolean indCss = false;
 
-	public void setCve_especialidad(String cve_especialidad) {
-		this.cve_especialidad = cve_especialidad;
-	}
+    @Column(name = "FEC_EXPIRA")
+    private LocalDate fecExpira;
 
-	public String getDes_especialidad() {
-		return des_especialidad;
-	}
+    @Column(name = "FEC_ALTA")
+    private Date fecAlta;
 
-	public void setDes_especialidad(String des_especialidad) {
-		this.des_especialidad = des_especialidad;
-	}
+    @Column(name = "FEC_ACTUALIZACION")
+    private Date fecActualizacion;
 
-	public Long getInd_ce() {
-		return ind_ce;
-	}
+    @Column(name = "FEC_BAJA")
+    private Date fecBaja;
 
-	public void setInd_ce(Long ind_ce) {
-		this.ind_ce = ind_ce;
-	}
+    @Column(name = "IND_ACTIVO")
+    private Boolean indActivo;
 
-	public Long getInd_iq() {
-		return ind_iq;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public void setInd_iq(Long ind_iq) {
-		this.ind_iq = ind_iq;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public Long getInd_hospital() {
-		return ind_hospital;
-	}
+    public String getDesClaveEspecialidad() {
+        return desClaveEspecialidad;
+    }
 
-	public void setInd_hospital(Long ind_hospital) {
-		this.ind_hospital = ind_hospital;
-	}
+    public void setDesClaveEspecialidad(String desClaveEspecialidad) {
+        this.desClaveEspecialidad = desClaveEspecialidad;
+    }
 
-	public Long getInd_nivel1() {
-		return ind_nivel1;
-	}
+    public String getNomEspecialidad() {
+        return nomEspecialidad;
+    }
 
-	public void setInd_nivel1(Long ind_nivel1) {
-		this.ind_nivel1 = ind_nivel1;
-	}
+    public void setNomEspecialidad(String nomEspecialidad) {
+        this.nomEspecialidad = nomEspecialidad;
+    }
 
-	public Long getInd_nivel2() {
-		return ind_nivel2;
-	}
+    public Boolean getIndCe() {
+        return indCe;
+    }
 
-	public void setInd_nivel2(Long ind_nivel2) {
-		this.ind_nivel2 = ind_nivel2;
-	}
+    public void setIndCe(Boolean indCe) {
+        this.indCe = indCe;
+    }
 
-	public Long getInd_nivel3() {
-		return ind_nivel3;
-	}
+    public Boolean getIndHospital() {
+        return indHospital;
+    }
 
-	public void setInd_nivel3(Long ind_nivel3) {
-		this.ind_nivel3 = ind_nivel3;
-	}
+    public void setIndHospital(Boolean indHospital) {
+        this.indHospital = indHospital;
+    }
 
-	public Long getInd_css() {
-		return ind_css;
-	}
+    public Boolean getIndIq() {
+        return indIq;
+    }
 
-	public void setInd_css(Long ind_css) {
-		this.ind_css = ind_css;
-	}
+    public void setIndIq(Boolean indIq) {
+        this.indIq = indIq;
+    }
 
-	public Date getFec_baja() {
-		return fec_baja;
-	}
+    public Boolean getIndNivel1() {
+        return indNivel1;
+    }
 
-	public void setFec_baja(Date fec_baja) {
-		this.fec_baja = fec_baja;
-	}
+    public void setIndNivel1(Boolean indNivel1) {
+        this.indNivel1 = indNivel1;
+    }
 
-	public Date getFec_alta() {
-		return fec_alta;
-	}
+    public Boolean getIndNivel2() {
+        return indNivel2;
+    }
 
-	public void setFec_alta(Date fec_alta) {
-		this.fec_alta = fec_alta;
-	}
+    public void setIndNivel2(Boolean indNivel2) {
+        this.indNivel2 = indNivel2;
+    }
 
-	public Date getFec_actualizacion() {
-		return fec_actualizacion;
-	}
+    public Boolean getIndNivel3() {
+        return indNivel3;
+    }
 
-	public void setFec_actualizacion(Date fec_actualizacion) {
-		this.fec_actualizacion = fec_actualizacion;
-	}
+    public void setIndNivel3(Boolean indNivel3) {
+        this.indNivel3 = indNivel3;
+    }
 
+    public Boolean getIndCss() {
+        return indCss;
+    }
 
-	
+    public void setIndCss(Boolean indCss) {
+        this.indCss = indCss;
+    }
 
+    public LocalDate getFecExpira() {
+        return fecExpira;
+    }
+
+    public void setFecExpira(LocalDate fecExpira) {
+        this.fecExpira = fecExpira;
+    }
+
+    public Date getFecAlta() {
+        return fecAlta;
+    }
+
+    public void setFecAlta(Date fecAlta) {
+        this.fecAlta = fecAlta;
+    }
+
+    public Date getFecActualizacion() {
+        return fecActualizacion;
+    }
+
+    public void setFecActualizacion(Date fecActualizacion) {
+        this.fecActualizacion = fecActualizacion;
+    }
+
+    public Date getFecBaja() {
+        return fecBaja;
+    }
+
+    public void setFecBaja(Date fecBaja) {
+        this.fecBaja = fecBaja;
+    }
+
+    public Boolean getIndActivo() {
+        return indActivo;
+    }
+
+    public void setIndActivo(Boolean indActivo) {
+        this.indActivo = indActivo;
+    }
 
 }
-
-
-
