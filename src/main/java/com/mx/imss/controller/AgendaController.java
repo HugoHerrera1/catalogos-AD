@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 
@@ -37,11 +38,40 @@ public class AgendaController {
 	
 	@Autowired
 	private CalendarioAnualRepositorio calendario;
+
+	@Autowired
+	private CieRepositorio cie;
+
+	@Autowired
+	private EstadosRepositorio estados;
+
+	@Autowired
+	private DelegacionMunicipioRepositorio delegacionMunicipio;
+
+	@Autowired
+	private CiudadesRepositorio ciudades;
 	
 //	@Autowired
 //	private DiagnosticosMedicosRepositorio diagnosticos;
 
-	
+	// eflofe
+	@GetMapping("/cie")
+	public List<CIE10> listCie(){
+		return cie.getAllCIE();
+	}
+	@GetMapping("/listEstados")
+	public List<Estados> listEstados(){return estados.getAllEstados();}
+
+	@GetMapping("/getDelegacionMunicipio/{idEstado}")
+	public List<DelegacionMunicipio> listDelegacion(@PathVariable Long idEstado)
+	{
+		return delegacionMunicipio.getDelegacionesByEstado(idEstado);}
+
+	@GetMapping("/getCiudades/{idEstado}/{idDelegacion}")
+	public List<Ciudades> listCiudades(@PathVariable Integer idEstado, @PathVariable Integer idDelegacion)
+	{return  ciudades.getCiudadesByEstadoAndMunicipio(idEstado,idDelegacion);}
+
+	// fin eflofe
 	@GetMapping("/listservicios")
 	public List<Especialidad> listservicios(){	
 		return especialidadRepositorio.findByEspecialidad();
