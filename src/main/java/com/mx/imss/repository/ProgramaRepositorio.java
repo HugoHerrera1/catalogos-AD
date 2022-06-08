@@ -13,7 +13,7 @@ import com.mx.imss.model.Turno;
 
 @Repository
 public interface ProgramaRepositorio extends JpaRepository<Programa, String>{	
-	@Query("select n from Programa n where  n.indActivo=1 and n.cveEspecialidad=?1")
+	@Query("select n from Programa n where  n.indActivo=1 and n.id=?1")
 	List<Programa> findByPrograma(String especialidad);
 	
 	

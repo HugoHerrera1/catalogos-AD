@@ -11,7 +11,7 @@ import com.mx.imss.model.Ubicacion;
 
 @Repository
 public interface UbicacionRepositorio extends JpaRepository<Ubicacion, String>{	
-	@Query("select n from Ubicacion n where  n.indActivo=1 and n.cveEspecialidad=?1")
+	@Query("select n from Ubicacion n where  n.indActivo=1 and n.id=?1")
 	List<Ubicacion> findByUbicacion(String cve_especialidad);
 	
 	/*@Query("select n from Ubicacion  where  ind_activo=1 and n.cve_especialidad=?1 and n.cve_tipo_unidad_medica=?1 and n.cve_nivel=?1 and n.cve_unidad_medica=?1 ")
