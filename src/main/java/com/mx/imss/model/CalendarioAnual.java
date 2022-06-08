@@ -1,6 +1,7 @@
 package com.mx.imss.model;
 
 import javax.persistence.*;
+import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Date;
@@ -26,10 +27,10 @@ public class CalendarioAnual {
     private Integer idTurno;
 
     @Column(name = "FEC_INICIO", nullable = false)
-    private LocalDate fecInicio;
+    private Date fecInicio;
 
     @Column(name = "TIM_HORA_INICIO", nullable = false)
-    private LocalTime timHoraInicio;
+    private Time timHoraInicio;
 
     @Column(name = "NUM_DURACION", nullable = false)
     private Integer numDuracion;
@@ -38,7 +39,7 @@ public class CalendarioAnual {
     private Date fecFin;
 
     @Column(name = "TIM_HORA_FIN", nullable = false)
-    private LocalTime timHoraFin;
+    private Time timHoraFin;
 
     @Column(name = "NUM_MAXIMO_PARTCIPANTES", nullable = false)
     private Integer numMaximoPartcipantes;
@@ -47,7 +48,7 @@ public class CalendarioAnual {
     private String desTrabajadorSocial;
 
     @Column(name = "FEC_EXPIRA")
-    private LocalDate fecExpira;
+    private Date fecExpira;
 
     @Column(name = "FEC_ALTA")
     private Date fecAlta;
@@ -101,19 +102,19 @@ public class CalendarioAnual {
         this.idTurno = idTurno;
     }
 
-    public LocalDate getFecInicio() {
+    public Date getFecInicio() {
         return fecInicio;
     }
 
-    public void setFecInicio(LocalDate fecInicio) {
+    public void setFecInicio(Date fecInicio) {
         this.fecInicio = fecInicio;
     }
 
-    public LocalTime getTimHoraInicio() {
+    public Time getTimHoraInicio() {
         return timHoraInicio;
     }
 
-    public void setTimHoraInicio(LocalTime timHoraInicio) {
+    public void setTimHoraInicio(Time timHoraInicio) {
         this.timHoraInicio = timHoraInicio;
     }
 
@@ -133,11 +134,11 @@ public class CalendarioAnual {
         this.fecFin = fecFin;
     }
 
-    public LocalTime getTimHoraFin() {
+    public Time getTimHoraFin() {
         return timHoraFin;
     }
 
-    public void setTimHoraFin(LocalTime timHoraFin) {
+    public void setTimHoraFin(Time timHoraFin) {
         this.timHoraFin = timHoraFin;
     }
 
@@ -157,11 +158,11 @@ public class CalendarioAnual {
         this.desTrabajadorSocial = desTrabajadorSocial;
     }
 
-    public LocalDate getFecExpira() {
+    public Date getFecExpira() {
         return fecExpira;
     }
 
-    public void setFecExpira(LocalDate fecExpira) {
+    public void setFecExpira(Date fecExpira) {
         this.fecExpira = fecExpira;
     }
 
