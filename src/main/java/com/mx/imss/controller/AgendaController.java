@@ -38,8 +38,8 @@ public class AgendaController {
 	@Autowired
 	private CalendarioAnualRepositorio calendario;
 	
-//	@Autowired
-//	private DiagnosticosMedicosRepositorio diagnosticos;
+	@Autowired
+	private DiagnosticosMedicosRepositorio diagnosticos;
 
 	
 	@GetMapping("/listservicios")
@@ -86,10 +86,10 @@ public class AgendaController {
 		return calendario.findByCalendarioAnual(programa,ubicacion);
 	}
 	
-//	@GetMapping("/listDiagnosticos/{cadena}")
-//	public List<DiagnosticosMedicos> listDiagnosticos(@PathVariable String cadena){
-//		return diagnosticos.findDiagnosticosByDesc(cadena);
-//	}
+	@GetMapping("/listDiagnosticos/{cadena}")
+	public List<DiagnosticosMedicos> listDiagnosticos(@PathVariable String cadena){	
+		return diagnosticos.findDiagnosticosByDesc("%".concat(cadena).concat("%").toUpperCase());
+	}
 	
 	/*@GetMapping("/listUbicaciones/{especialidad}/{cve_tipo_unidad_medica}/{cve_nivel}/{cve_unidad_medica}")
 	public List<Ubicacion> listUbicaciones(@PathVariable Long especialidad,@PathVariable Long cve_tipo_unidad_medica,@PathVariable Long cve_nivel,@PathVariable Long cve_unidad_medica){	
