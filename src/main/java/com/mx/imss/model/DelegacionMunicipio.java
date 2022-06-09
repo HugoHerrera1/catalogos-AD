@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "adtcorebdqa.adtsc_delegacion_municipio")
+@Table(name = "adtsc_delegacion_municipio")
 public class DelegacionMunicipio {
 
     @Id

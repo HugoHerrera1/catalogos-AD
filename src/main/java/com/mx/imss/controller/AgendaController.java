@@ -6,6 +6,8 @@ import com.mx.imss.utility.Crypto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -55,7 +57,7 @@ public class AgendaController {
 //	private DiagnosticosMedicosRepositorio diagnosticos;
 
 	// eflofe
-	@GetMapping("/cie")
+	@GetMapping("/getCatalogoCie")
 	public List<CIE10> listCie(){
 		return cie.getAllCIE();
 	}
@@ -70,6 +72,11 @@ public class AgendaController {
 	@GetMapping("/getCiudades/{idEstado}/{idDelegacion}")
 	public List<Ciudades> listCiudades(@PathVariable Integer idEstado, @PathVariable Integer idDelegacion)
 	{return  ciudades.getCiudadesByEstadoAndMunicipio(idEstado,idDelegacion);}
+
+	@GetMapping("/getNombreDiagnostico/{idDiagnostico}")
+	public ResponseEntity getNombreDiagnostico(@PathVariable Integer idDiagnostico){
+		return new ResponseEntity<>(cie.getDatosById(idDiagnostico), HttpStatus.OK);
+	}
 
 	// fin eflofe
 	@GetMapping("/listservicios")
