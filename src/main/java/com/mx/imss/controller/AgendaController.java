@@ -78,6 +78,11 @@ public class AgendaController {
 		return new ResponseEntity<>(cie.getDatosById(idDiagnostico), HttpStatus.OK);
 	}
 
+	@GetMapping("/getCatalogoCieAutoComplete/{caracteres}")
+	public List<CIE10> autoComplete(@PathVariable String caracteres){
+		return cie.autoCompleteCie(caracteres);
+	}
+
 	// fin eflofe
 	@GetMapping("/listservicios")
 	public List<Especialidad> listservicios(){	
