@@ -16,113 +16,119 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/")
-@CrossOrigin(origins="http://localhost:4200/")
+@CrossOrigin(origins = "http://localhost:4200/")
 public class AgendaController {
-	
-	private final static Logger logger = LoggerFactory.getLogger(AgendaController.class);
-	
-	Crypto crypto = new Crypto();
-	
-	@Autowired
-	private EspecialidadRepositorio especialidadRepositorio;
 
-	@Autowired
-	private TurnoRepositorio turno;
-	
-	@Autowired
-	private ProgramaRepositorio programa;
-	
-	@Autowired
-	private ResponsablesRepositorio responsables;
-	
-	@Autowired
-	private UbicacionRepositorio ubicacion;
-	
-	@Autowired
-	private CalendarioAnualRepositorio calendario;
+    private final static Logger logger = LoggerFactory.getLogger(AgendaController.class);
 
-	@Autowired
-	private CieRepositorio cie;
+    Crypto crypto = new Crypto();
 
-	@Autowired
-	private EstadosRepositorio estados;
+    @Autowired
+    private EspecialidadRepositorio especialidadRepositorio;
 
-	@Autowired
-	private DelegacionMunicipioRepositorio delegacionMunicipio;
+    @Autowired
+    private TurnoRepositorio turno;
 
-	@Autowired
-	private CiudadesRepositorio ciudades;
-	
+    @Autowired
+    private ProgramaRepositorio programa;
+
+    @Autowired
+    private ResponsablesRepositorio responsables;
+
+    @Autowired
+    private UbicacionRepositorio ubicacion;
+
+    @Autowired
+    private CalendarioAnualRepositorio calendario;
+
+    @Autowired
+    private CieRepositorio cie;
+
+    @Autowired
+    private EstadosRepositorio estados;
+
+    @Autowired
+    private DelegacionMunicipioRepositorio delegacionMunicipio;
+
+    @Autowired
+    private CiudadesRepositorio ciudades;
+
 //	@Autowired
 //	private DiagnosticosMedicosRepositorio diagnosticos;
 
-	// eflofe
-	@GetMapping("/getCatalogoCie")
-	public List<CIE10> listCie(){
-		return cie.getAllCIE();
-	}
-	@GetMapping("/listEstados")
-	public List<Estados> listEstados(){return estados.getAllEstados();}
+    // eflofe
+    @GetMapping("/getCatalogoCie")
+    public List<CIE10> listCie() {
+        return cie.getAllCIE();
+    }
 
-	@GetMapping("/getDelegacionMunicipio/{idEstado}")
-	public List<DelegacionMunicipio> listDelegacion(@PathVariable Long idEstado)
-	{
-		return delegacionMunicipio.getDelegacionesByEstado(idEstado);}
+    @GetMapping("/listEstados")
+    public List<Estados> listEstados() {
+        return estados.getAllEstados();
+    }
 
-	@GetMapping("/getCiudades/{idEstado}/{idDelegacion}")
-	public List<Ciudades> listCiudades(@PathVariable Integer idEstado, @PathVariable Integer idDelegacion)
-	{return  ciudades.getCiudadesByEstadoAndMunicipio(idEstado,idDelegacion);}
+    @GetMapping("/getDelegacionMunicipio/{idEstado}")
+    public List<DelegacionMunicipio> listDelegacion(@PathVariable Long idEstado) {
+        return delegacionMunicipio.getDelegacionesByEstado(idEstado);
+    }
 
-	@GetMapping("/getNombreDiagnostico/{idDiagnostico}")
-	public ResponseEntity getNombreDiagnostico(@PathVariable Integer idDiagnostico){
-		return new ResponseEntity<>(cie.getDatosById(idDiagnostico), HttpStatus.OK);
-	}
+    @GetMapping("/getCiudades/{idEstado}/{idDelegacion}")
+    public List<Ciudades> listCiudades(@PathVariable Integer idEstado, @PathVariable Integer idDelegacion) {
+        return ciudades.getCiudadesByEstadoAndMunicipio(idEstado, idDelegacion);
+    }
 
-	// fin eflofe
-	@GetMapping("/listservicios")
-	public List<Especialidad> listservicios(){	
-		return especialidadRepositorio.findByEspecialidad();
-	} 
-	
-	@GetMapping("/listEspecialidad/{especialidad}")
-	public List<Especialidad> listEspecialidad(@PathVariable String especialidad){	
-		return especialidadRepositorio.findByCvEspecialidad(especialidad);
-	} 
-	@GetMapping("/listTurnos")
-	public List<Turno> listTurnos(){	
-		return turno.findByTurno();
-	}
+    @GetMapping("/getNombreDiagnostico/{idDiagnostico}")
+    public ResponseEntity getNombreDiagnostico(@PathVariable Integer idDiagnostico) {
+        return new ResponseEntity<>(cie.getDatosById(idDiagnostico), HttpStatus.OK);
+    }
 
-	@GetMapping("/listTurnose/{cveturno}")
-	public List<Turno> listTurnosb(@PathVariable int cveturno){
-		return turno.findByCveTurno(cveturno);
-	}
-	@GetMapping("/listPrograma/{idGrupo}")
-	public List<Programa> listPrograma(@PathVariable Integer idGrupo){
-		return programa.findByPrograma(idGrupo);
-	}	
-	
-	@GetMapping("/listResponsables/{ubicacion}/{turno}")
-	public List<Responsables> listResponsables(@PathVariable String ubicacion,@PathVariable Long turno){	
-		return responsables.findByResponsables(ubicacion,turno);
-	}	
+    // fin eflofe
+    @GetMapping("/listservicios")
+    public List<Especialidad> listservicios() {
+        return especialidadRepositorio.findByEspecialidad();
+    }
 
-	
-	@GetMapping("/listUbicacion/{idUbicacion}")
-	public List<Ubicacion> listUbicacion(@PathVariable Integer idUbicacion){
-		return ubicacion.findByUbicacion(idUbicacion);
-	}
-	
-	@GetMapping("/listCalendario")
-	public List<CalendarioAnual> listCalendario(){	
-		return calendario.findByCalendario();
-	}
-	
-	@GetMapping("/listCalendarioAnual/{programa}/{ubicacion}")
-	public List<CalendarioAnual> listCalendarioAnual(@PathVariable String programa,@PathVariable String ubicacion){	
-		return calendario.findByCalendarioAnual(programa,ubicacion);
-	}
-	
+    @GetMapping("/listEspecialidad/{especialidad}")
+    public List<Especialidad> listEspecialidad(@PathVariable String especialidad) {
+        return especialidadRepositorio.findByCvEspecialidad(especialidad);
+    }
+
+    @GetMapping("/listTurnos")
+    public List<Turno> listTurnos() {
+        return turno.findByTurno();
+    }
+
+    @GetMapping("/listTurnose/{cveturno}")
+    public List<Turno> listTurnosb(@PathVariable int cveturno) {
+        return turno.findByCveTurno(cveturno);
+    }
+
+    @GetMapping("/listPrograma/{idGrupo}")
+    public List<Programa> listPrograma(@PathVariable Integer idGrupo) {
+        return programa.findByPrograma(idGrupo);
+    }
+
+    @GetMapping("/listResponsables/{ubicacion}/{turno}")
+    public List<Responsables> listResponsables(@PathVariable String ubicacion, @PathVariable Long turno) {
+        return responsables.findByResponsables(ubicacion, turno);
+    }
+
+
+    @GetMapping("/listUbicacion/{idUbicacion}")
+    public List<Ubicacion> listUbicacion(@PathVariable Integer idUbicacion) {
+        return ubicacion.findByUbicacion(idUbicacion);
+    }
+
+    @GetMapping("/listCalendario")
+    public List<CalendarioAnual> listCalendario() {
+        return calendario.findByCalendario();
+    }
+
+    @GetMapping("/listCalendarioAnual/{programa}/{ubicacion}")
+    public List<CalendarioAnual> listCalendarioAnual(@PathVariable String programa, @PathVariable String ubicacion) {
+        return calendario.findByCalendarioAnual(programa, ubicacion);
+    }
+
 //	@GetMapping("/listDiagnosticos/{cadena}")
 //	public List<DiagnosticosMedicos> listDiagnosticos(@PathVariable String cadena){
 //		return diagnosticos.findDiagnosticosByDesc(cadena);
@@ -134,14 +140,6 @@ public class AgendaController {
 	}
 	
 	*/
-
-
-
-	//ESTO FUE HECHO POR TRABAJO SOCIAL
-
-
-
-
 
 
 }
