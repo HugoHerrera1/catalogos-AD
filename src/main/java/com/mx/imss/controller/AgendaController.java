@@ -91,7 +91,6 @@ public class AgendaController {
 	public ResponseEntity getNombreDiagnostico(@PathVariable Integer idDiagnostico){
 		return new ResponseEntity<>(cie.getDatosById(idDiagnostico), HttpStatus.OK);
 	}
-
 	@GetMapping("/getCatalogoCieAutoComplete/{caracteres}")
 	public List<CIE10> autoComplete(@PathVariable String caracteres){
 		return cie.autoCompleteCie(caracteres);
@@ -119,9 +118,9 @@ public class AgendaController {
 	public List<Turno> listTurnosb(@PathVariable int cveturno){
 		return turno.findByCveTurno(cveturno);
 	}
-	@GetMapping("/listPrograma/{especialidad}")
-	public List<Programa> listPrograma(@PathVariable String especialidad){	
-		return programa.findByPrograma(especialidad);
+	@GetMapping("/listPrograma/{idGrupo}")
+	public List<Programa> listPrograma(@PathVariable Integer idGrupo){
+		return programa.findByPrograma(idGrupo);
 	}	
 	
 	@GetMapping("/listResponsables/{ubicacion}/{turno}")
@@ -130,9 +129,9 @@ public class AgendaController {
 	}	
 
 	
-	@GetMapping("/listUbicacion/{especialidad}")
-	public List<Ubicacion> listUbicacion(@PathVariable String especialidad){	
-		return ubicacion.findByUbicacion(especialidad);
+	@GetMapping("/listUbicacion/{idUbicacion}")
+	public List<Ubicacion> listUbicacion(@PathVariable Integer idUbicacion){
+		return ubicacion.findByUbicacion(idUbicacion);
 	}
 	
 	@GetMapping("/listCalendario")
