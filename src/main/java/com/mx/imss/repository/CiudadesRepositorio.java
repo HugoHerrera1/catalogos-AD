@@ -11,4 +11,7 @@ import java.util.List;
 public interface CiudadesRepositorio extends JpaRepository<Ciudades,Long> {
     @Query(value = "select ac.ID_CIUDAD, ac.ID_ESTADO, ac.ID_DELEGACION_MUNICIPIO, ac.NOM_CIUDAD  from adtsc_ciudades ac where ac.ID_ESTADO = ?1 and ac.ID_DELEGACION_MUNICIPIO = ?2 and ac.IND_ACTIVO = 1;", nativeQuery = true)
     List<Ciudades> getCiudadesByEstadoAndMunicipio(Integer idEstado, Integer idDelegacion);
+
+    @Query(value = "select ac.ID_CIUDAD, ac.ID_ESTADO, ac.ID_DELEGACION_MUNICIPIO, ac.NOM_CIUDAD  from adtsc_ciudades ac where ac.ID_ESTADO = ?1 and ac.ID_DELEGACION_MUNICIPIO = ?2 and ac.ID_CIUDAD= ?3  and ac.IND_ACTIVO = 1;",nativeQuery = true)
+    Ciudades getCiudadById(Long idEstado, Long idDelegacion, Long idCiudad);
 }

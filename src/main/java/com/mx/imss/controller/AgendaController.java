@@ -52,6 +52,9 @@ public class AgendaController {
 
 	@Autowired
 	private CiudadesRepositorio ciudades;
+
+	@Autowired
+	private OcupacionRepositorio ocupacion;
 	
 //	@Autowired
 //	private DiagnosticosMedicosRepositorio diagnosticos;
@@ -64,14 +67,25 @@ public class AgendaController {
 	@GetMapping("/listEstados")
 	public List<Estados> listEstados(){return estados.getAllEstados();}
 
+	@GetMapping("/getEstadoByID/{idEstado}")
+	public ResponseEntity<Estados> getEstadoById(@PathVariable Integer idEstado){return new ResponseEntity<>(estados.getEstadoById(idEstado),HttpStatus.OK);}
+
 	@GetMapping("/getDelegacionMunicipio/{idEstado}")
 	public List<DelegacionMunicipio> listDelegacion(@PathVariable Long idEstado)
 	{
 		return delegacionMunicipio.getDelegacionesByEstado(idEstado);}
 
+	@GetMapping("/getDelegacionMunicipioById/{idEstado}/{idDelegacion}")
+	public ResponseEntity<DelegacionMunicipio> getDelegacionByID(@PathVariable Long idEstado, @PathVariable Long idDelegacion){return new ResponseEntity<>(delegacionMunicipio.getDelegacionById(idDelegacion,idEstado),HttpStatus.OK);}
+
 	@GetMapping("/getCiudades/{idEstado}/{idDelegacion}")
 	public List<Ciudades> listCiudades(@PathVariable Integer idEstado, @PathVariable Integer idDelegacion)
 	{return  ciudades.getCiudadesByEstadoAndMunicipio(idEstado,idDelegacion);}
+
+	@GetMapping("/getCiudadesByID/{idEstado}/{idDelegacion}/{idCiudad}")
+	public ResponseEntity<Ciudades> getCiudadesByID(@PathVariable Long idEstado, @PathVariable Long idDelegacion, @PathVariable Long idCiudad){
+		return new ResponseEntity<>(ciudades.getCiudadById(idEstado,idDelegacion,idCiudad), HttpStatus.OK);
+	}
 
 	@GetMapping("/getNombreDiagnostico/{idDiagnostico}")
 	public ResponseEntity getNombreDiagnostico(@PathVariable Integer idDiagnostico){
@@ -82,6 +96,9 @@ public class AgendaController {
 	public List<CIE10> autoComplete(@PathVariable String caracteres){
 		return cie.autoCompleteCie(caracteres);
 	}
+
+	@GetMapping("/getOcupacionByID/{idOcupacion}")
+	public ResponseEntity<Ocupacion> getOcupacionByID(@PathVariable Long idOcupacion){return new ResponseEntity<>(ocupacion.getOcupacionByID(idOcupacion),HttpStatus.OK);}
 
 	// fin eflofe
 	@GetMapping("/listservicios")

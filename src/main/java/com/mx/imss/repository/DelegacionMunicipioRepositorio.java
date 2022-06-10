@@ -11,4 +11,7 @@ import java.util.List;
 public interface DelegacionMunicipioRepositorio extends JpaRepository<DelegacionMunicipio,Long> {
     @Query(value = "select adm.ID_DELEGACION_MUNICIPIO , adm.ID_ESTADO , adm.NOM_MUNICIPIO from adtsc_delegacion_municipio adm where adm.ID_ESTADO =?1 and adm.IND_ACTIVO =1;",nativeQuery = true)
     List<DelegacionMunicipio> getDelegacionesByEstado(Long idEstado);
+
+    @Query(value = "select adm.ID_DELEGACION_MUNICIPIO , adm.ID_ESTADO , adm.NOM_MUNICIPIO from adtsc_delegacion_municipio adm where adm.ID_DELEGACION_MUNICIPIO = ?1 and adm.ID_ESTADO = ?2 and adm.IND_ACTIVO =1;",nativeQuery = true)
+    DelegacionMunicipio getDelegacionById(Long idDelegacion, Long idEstado);
 }
